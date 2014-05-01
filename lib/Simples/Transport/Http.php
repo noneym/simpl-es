@@ -58,16 +58,16 @@ class Simples_Transport_Http extends Simples_Transport {
 		curl_setopt($this->_connection, CURLOPT_CONNECTTIMEOUT, $this->config('timeout')) ;
 		curl_setopt($this->_connection, CURLOPT_RETURNTRANSFER, 1) ;
 		
-		// Check if it's an ES server
-		if ($this->config('check')) {
-			$res = $this->call('/') ;
-			if (!isset($res)) {
-				throw new Simples_Transport_Exception('Invalid JSON or empty response') ;
-			}
-			if (!isset($res['ok']) || (isset($res['ok']) && $res['ok'] !== true)) {
-				throw new Simples_Transport_Exception('Bad response from ElasticSearch server. Are you sure you\'re calling the good guy ?') ;
-			}
-		}
+		// Check if it's an ES server (if i use this line,script Not Working)
+		//if ($this->config('check')) {
+		//	$res = $this->call('/') ;
+		//	if (!isset($res)) {
+		//		throw new Simples_Transport_Exception('Invalid JSON or empty response') ;
+		//	}
+		//	if (!isset($res['ok']) || (isset($res['ok']) && $res['ok'] !== true)) {
+		//		throw new Simples_Transport_Exception('Bad response from ElasticSearch server. Are you sure you\'re calling the good guy ?') ;
+		//	}
+		//}
 		
 		return $this ;
 	}
